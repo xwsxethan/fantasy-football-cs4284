@@ -1,6 +1,8 @@
 <?php
 class Player
 {
+	// Testing SVN
+
     // Variable Declarations
 	// Note: for defense name = team name
     private $name, $position, $team, $nextWeek, $fantasyTeam, $injury, $passingYards, 
