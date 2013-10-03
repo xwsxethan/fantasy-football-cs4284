@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<!--[if IE 8]> 				 <html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<head>
+	<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Fantasy Football</title>
+
+  
+  <link rel="stylesheet" href="css/foundation.css">
+  
+
+  <script src="js/vendor/custom.modernizr.js"></script>
+
+</head>
+<body>
+
+	<div class="row">
+		<div class="large-12 columns">
+			<h2>Welcome to Fantasy Football</h2>
+			<p>This is version 0.0.2</p>
+			<hr />
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="large-8 columns">
+			<h2>Storyboard</h2>
+
+			<!-- Grid Example -->
+			<h3>Temporary Driver to Get Stats</h3>
+			<div class="row">
+				<div class="large-12 columns">
+					<div class="panel">
+						<p style="text-align:center;">
+							This will actually be turned on soon for real data!
+							Only mock stats work for now though.
+						</p>
+					</div>
+				</div>
+			</div>
+						
+			<div class="row">
+				<div class="large-12 columns">
+					<form data-abide>
+						<fieldset>
+							<legend>Input Your Information Here</legend>
+
+							<div class="row">
+								<div class="large-12 columns">
+									<label>League ID</label>
+									<input type="text" placeholder="Your League ID Goes Here" required pattern="number">
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="large-6 columns">
+									<label>Team ID</label>
+									<input type="text" placeholder="Your Team ID Optionally Goes Here" pattern="number">
+								</div>
+								<div class="large-6 columns">
+									<label>Season ID</label>
+									<input type="text" placeholder="Your Season ID Optionally Goes Here" pattern="number">
+								</div>
+								<!--<div class="large-4 columns">
+									<div class="row collapse">
+										<label>Input Label</label>
+										<div class="small-9 columns">
+											<input type="text" placeholder="small-9.columns">
+										</div>
+										<div class="small-3 columns">
+											<span class="postfix">.com</span>
+										</div>
+									</div>
+								</div>-->
+							</div>
+
+							<!--<div class="row">
+								<div class="large-12 columns">
+									<label>Textarea Label</label>
+									<textarea placeholder="small-12.columns"></textarea>
+								</div>
+							</div>-->
+
+						</fieldset>
+					</form>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="large-3 columns">
+					<p><a href="#" class="small success button">Get Real Stats</a></p>
+				</div>
+			<!--</div>
+				
+			<div class="row">
+				<div class="large-12 columns">
+					<div class="panel">
+						<p style="text-align:center;">For now, this only displays mock data from the DB.</p>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">-->
+				<div class="large-3 columns">
+					<p><a href="#" class="small button" onclick="getDumbData()">Get Mock Stats</a></p>
+				</div>
+			</div>
+			
+			
+			<div class="row">
+				<div class="large-12 columns" id="temp_table_data">
+				
+				</div>
+			</div>
+				
+			<!--<h3>Final Login Driver</h3>
+			<div class="row">
+				<div class="large-12 columns">
+					<div class="panel">
+						<p>User Name</p>
+					</div>
+				</div>
+				<div class="large-12 columns">
+					<div class="panel">
+						<p>Password</p>
+					</div>
+				</div>
+			</div>
+			<p><a href="#" class="small button">Login</a></p>-->
+
+		  
+		</div>
+
+		<div class="large-4 columns">
+			<h5>Disclaimer:</h5>
+			<p>Some documentation information is presented here for development reference only. This will be removed in final version and replaced by something useful.</p>
+			<h4>Authors</h4>
+			<div class="row">
+				<div class="large-1 columns">
+				</div>
+				<div class="large-10 columns">
+					<ul class="disc">
+						<li>Thomas Fitzpatrick</li>
+						<li>Ethan Holder</li>
+						<li>Michael McCreedy</li>
+						<li>John Thompson</li>
+					</ul>
+				</div>
+			</div>
+			<!--<h4>Getting Started</h4>
+			<p>We're stoked you want to try Foundation! To get going, this file (index.html) includes some basic styles you can modify, play around with, or totally destroy to get going.</p>
+
+			<h4>Other Resources</h4>
+			<p>Once you've exhausted the fun in this document, you should check out:</p>
+			<ul class="disc">
+				<li><a href="http://foundation.zurb.com/docs">Foundation Documentation</a><br />Everything you need to know about using the framework.</li>
+				<li><a href="http://github.com/zurb/foundation">Foundation on Github</a><br />Latest code, issue reports, feature requests and more.</li>
+				<li><a href="http://twitter.com/foundationzurb">@foundationzurb</a><br />Ping us on Twitter if you have questions. If you build something with this we'd love to see it (and send you a totally boss sticker).</li>
+			</ul>-->
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		var xmlhttp;
+		/*xmlhttp.onreadystatechange = function() {
+			if(readyState == 4){
+				var response = xmlhttp.responseText;
+				//alert(response);
+				document.getElementById("temp_table_data").innerHTML = response;
+			}
+		}*/
+		
+		function getDumbData() {
+			xmlhttp = new XMLHttpRequest();
+			xmlhttp.onreadystatechange = writeDumbTable; 
+			xmlhttp.open("GET", "connect.php", true); //encode variables to URL
+			//xmlhttp.open("GET", "phpscript.php?foo=bar&bar=foo", true); //encode variables to URL
+			xmlhttp.send();
+		}
+		
+		function writeDumbTable() {
+			if(xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+				var response = xmlhttp.responseText;
+				document.getElementById("temp_table_data").innerHTML = xmlhttp.responseText;
+			}
+		}
+	</script>
+	
+	<script>
+		document.write('<script src=' + 
+			('__proto__' in {} ? 'js/vendor/zepto' : 'js/vendor/jquery')
+			+ '.js><\/script>')
+	</script>
+
+	<script src="js/foundation.min.js"></script>
+	<script src="js/foundation/foundation.js"></script>
+	<script src="js/foundation/foundation.abide.js"></script>
+	
+	  
+	<script>
+		$(document).foundation();
+	</script>
+  <!--
+  
+  <script src="js/foundation/foundation.js"></script>
+  
+  <script src="js/foundation/foundation.alerts.js"></script>
+  
+  <script src="js/foundation/foundation.clearing.js"></script>
+  
+  <script src="js/foundation/foundation.cookie.js"></script>
+  
+  <script src="js/foundation/foundation.dropdown.js"></script>
+  
+  <script src="js/foundation/foundation.forms.js"></script>
+  
+  <script src="js/foundation/foundation.joyride.js"></script>
+  
+  <script src="js/foundation/foundation.magellan.js"></script>
+  
+  <script src="js/foundation/foundation.orbit.js"></script>
+  
+  <script src="js/foundation/foundation.reveal.js"></script>
+  
+  <script src="js/foundation/foundation.section.js"></script>
+  
+  <script src="js/foundation/foundation.tooltips.js"></script>
+  
+  <script src="js/foundation/foundation.topbar.js"></script>
+  
+  <script src="js/foundation/foundation.interchange.js"></script>
+  
+  <script src="js/foundation/foundation.placeholder.js"></script>
+  
+  <script src="js/foundation/foundation.abide.js"></script>
+  
+  -->
+  
+</body>
+</html>
