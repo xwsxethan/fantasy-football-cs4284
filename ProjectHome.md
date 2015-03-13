@@ -1,0 +1,1 @@
+The goal of this project is to be able to make statistics and injury-based recommendations on which players to start, bench, and pick up in order to maximize the potential points of a team in any given week via a web-hosted application.
